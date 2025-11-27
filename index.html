@@ -1,143 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hashtag Elevators</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hashtag Elevators — Professional Elevator Services</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background: #f9f9f9;
-        }
-        header {
-            background: #111;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        nav {
-            background: #222;
-            padding: 10px;
-            text-align: center;
-        }
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .hero {
-            background: #333;
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-        }
-        .section {
-            padding: 40px 20px;
-            max-width: 1000px;
-            margin: auto;
-        }
-        .services-box {
-            background: white;
-            padding: 20px;
-            margin: 10px 0;
-            border-radius: 8px;
-            box-shadow: 0 0 10px #ddd;
-        }
-        footer {
-            background: #111;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 30px;
-        }
+  <style>
+    :root{
+      --bg:#0b0b0b;
+      --card:#0f0f0f;
+      --gold:#f2c744;
+      --muted:#cfcfcf;
+      --accent:#222;
+      --maxw:1100px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:linear-gradient(180deg,#070707 0%, #0e0e0e 100%);
+      color:var(--muted);
+      -webkit-font-smoothing:antialiased;
+    }
 
-        /* WhatsApp Button */
-        .whatsapp-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #25D366;
-            color: white;
-            padding: 12px 18px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-    </style>
+    /* header / nav */
+    header{background:linear-gradient(90deg,rgba(0,0,0,.7), rgba(10,10,10,.9)); padding:26px 16px; border-bottom:1px solid rgba(255,255,255,.03)}
+    .container{max-width:var(--maxw); margin:0 auto; padding:0 16px;}
+    .top{display:flex;gap:16px;align-items:center; justify-content:space-between;}
+    .brand{display:flex;gap:12px;align-items:center}
+    /* inline svg logo container */
+    .logo-wrap{width:68px;height:68px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#111,#1a1a1a);border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.6)}
+    .brand h1{margin:0;font-size:20px;color:var(--gold);letter-spacing:0.6px}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+
+    nav a{color:var(--muted); text-decoration:none;margin-left:18px;font-weight:600}
+    nav a.cta{background:var(--gold); color:#080808; padding:8px 12px;border-radius:8px;margin-left:14px;font-weight:700}
+
+    /* hero */
+    .hero{padding:56px 0 40px}
+    .hero-inner{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+    .hero-left{flex:1 1 420px; min-width:280px}
+    .hero h2{color: #fff; margin:0 0 12px; font-size:34px; line-height:1.05}
+    .hero p.lead{color: #ddd; margin:0 0 18px}
+    .hero .kpis{display:flex;gap:12px;flex-wrap:wrap}
+    .kpi{background:linear-gradient(180deg,#0f0f0f,#131313); padding:12px 16px;border-radius:10px;border:1px solid rgba(255,255,255,.03); min-width:120px}
+    .kpi strong{display:block;color:var(--gold); font-size:18px}
+    .hero-right{flex:0 0 360px; min-width:240px; text-align:center}
+
+    /* sections */
+    section{background:transparent;padding:28px 0}
+    .card{background:var(--card); padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,.03); box-shadow:0 6px 24px rgba(0,0,0,.6)}
+    .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:14px}
+    .service{padding:18px;border-radius:10px;background:linear-gradient(180deg,#0e0e0e,#131313);border:1px solid rgba(255,255,255,.02)}
+    .service h4{color:var(--gold); margin:0 0 8px}
+    .service p{margin:0;color: #cfcfcf; font-size:14px}
+
+    /* gallery */
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:12px}
+    .gallery-grid img{width:100%;height:150px;object-fit:cover;border-radius:8px;border:1px solid rgba(255,255,255,.03)}
+
+    /* contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 380px;gap:20px}
+    .contact-card{padding:18px;border-radius:10px}
+    .info-list p{margin:8px 0;color:#dcdcdc}
+    .contact-form input,
+    .contact-form textarea{width:100%;padding:12px;margin:8px 0;border-radius:8px;border:1px solid rgba(255,255,255,.06); background:#0b0b0b;color:#fff}
+    .contact-form button{background:var(--gold);border:none;padding:12px 16px;border-radius:8px;font-weight:700;cursor:pointer}
+
+    footer{padding:24px 0;text-align:center;color:#bdbdbd;border-top:1px solid rgba(255,255,255,.02)}
+
+    /* floating whatsapp and qr */
+    .floating{position:fixed;right:18px;bottom:18px;z-index:999}
+    .whatsapp-fab{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#052006;padding:12px 14px;border-radius:999px;box-shadow:0 10px 30px rgba(37,211,102,.12);text-decoration:none;font-weight:800}
+    .qr-card{position:fixed;right:18px;bottom:88px;z-index:999; background:var(--card); padding:10px;border-radius:12px;border:1px solid rgba(255,255,255,.03); text-align:center; width:150px}
+    .qr-card img{width:120px;height:120px;display:block;margin:4px auto;border-radius:8px}
+
+    /* responsive */
+    @media (max-width:880px){
+      .contact-grid{grid-template-columns:1fr}
+      .hero-inner{flex-direction:column-reverse}
+      .hero-right{width:100%}
+    }
+  </style>
 </head>
-
 <body>
 
-<header>
-    <h1>Hashtag Elevators</h1>
-    <p>Lift Installation | Maintenance | Repair | AMC</p>
-</header>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="top">
+        <div class="brand">
+          <!-- Inline SVG logo (editable) -->
+          <div class="logo-wrap" aria-hidden="true">
+            <!-- simple monogram logo -->
+            <svg width="56" height="56" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hashtag Elevators logo">
+              <rect x="0" y="0" width="100" height="100" rx="14" fill="#0f0f0f"/>
+              <g fill="none" stroke="#f2c744" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M24 28 L76 28" />
+                <path d="M24 72 L76 72" />
+                <path d="M36 18 L36 82" />
+                <path d="M64 18 L64 82" />
+              </g>
+            </svg>
+          </div>
 
-<nav>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#contact">Contact</a>
-</nav>
+          <div>
+            <h1>Hashtag Elevators</h1>
+            <p>Premium Elevator Installation & Services</p>
+          </div>
+        </div>
 
-<div class="hero">
-    <h2>Professional Elevator Solutions</h2>
-    <p>Home Lifts • Passenger Lifts • Goods Lifts • Hospital Lifts</p>
-</div>
+        <nav aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#contact" class="cta">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
 
-<div id="about" class="section">
-    <h2>About Us</h2>
-    <p>
-        Hashtag Elevators is a trusted name in lift installation, maintenance, repair, and modernisation. 
-        We provide safe, reliable and long-lasting elevator solutions for homes, buildings, malls and industries.
-    </p>
-</div>
+  <!-- Hero -->
+  <main class="container">
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-left">
+          <h2>Professional Elevator Solutions — Safe. Fast. Reliable.</h2>
+          <p class="lead">We install, repair and maintain elevators for homes, apartments, hospitals, malls and industries. Certified technicians • Safety-first approach • Competitive pricing.</p>
 
-<div id="services" class="section">
-    <h2>Our Services</h2>
+          <div class="kpis">
+            <div class="kpi card"><strong>10+</strong><span style="color:#cfcfcf;font-size:13px">Years experience</span></div>
+            <div class="kpi card"><strong>100+</strong><span style="color:#cfcfcf;font-size:13px">Projects completed</span></div>
+            <div class="kpi card"><strong>24/7</strong><span style="color:#cfcfcf;font-size:13px">Emergency support</span></div>
+          </div>
+        </div>
 
-    <div class="services-box">
-        <h3>🛗 Elevator Installation</h3>
-        <p>New passenger, home and goods lift installation with premium safety features.</p>
+        <div class="hero-right card">
+          <img src="https://i.imgur.com/YH2z2Co.jpeg" alt="Elevator" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:10px" />
+          <p style="margin:0;color:#dcdcdc;font-size:14px">Get a free quote today. Professional estimates and timeline for every project.</p>
+          <div style="margin-top:12px">
+            <a class="whatsapp-fab" href="https://wa.me/916302831056" target="_blank" rel="noopener">
+              💬 WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="card">
+        <h3 style="color:var(--gold);margin-top:0">About Hashtag Elevators</h3>
+        <p>Hashtag Elevators delivers high-quality elevator installation, modernization, repair and Annual Maintenance Contracts (AMC). We follow industry safety standards, provide certified technicians and fast support to minimize downtime.</p>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+      <div class="card">
+        <h3 style="color:var(--gold);margin-top:0">Our Services</h3>
+        <div class="services-grid">
+          <div class="service">
+            <h4>🛗 Elevator Installation</h4>
+            <p>Full installation for passenger lifts, home lifts and goods lifts with safety compliance and testing.</p>
+          </div>
+          <div class="service">
+            <h4>⚙ AMC & Maintenance</h4>
+            <p>Tailored Annual Maintenance Contracts with monthly inspections to keep your lifts safe and smooth.</p>
+          </div>
+          <div class="service">
+            <h4>🔧 Repair & Emergency</h4>
+            <p>Rapid response repair service for breakdowns and electrical/mechanical faults.</p>
+          </div>
+          <div class="service">
+            <h4>⬆ Modernization</h4>
+            <p>Upgrade panels, controls, doors and interiors for improved performance and aesthetics.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery">
+      <div class="card">
+        <h3 style="color:var(--gold);margin-top:0">Gallery</h3>
+        <div class="gallery-grid">
+          <!-- Replace with your real images later -->
+          <img src="https://i.imgur.com/U4vV8ws.jpeg" alt="elevator 1"/>
+          <img src="https://i.imgur.com/vRV40Lq.jpeg" alt="elevator 2"/>
+          <img src="https://i.imgur.com/5y0Xc5M.jpeg" alt="elevator 3"/>
+          <img src="https://i.imgur.com/7x6fY2b.jpeg" alt="elevator 4"/>
+        </div>
+        <p style="margin-top:10px;color:#bfbfbf;font-size:13px">Send images and I'll update the gallery for you.</p>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="card">
+        <h3 style="color:var(--gold);margin-top:0">Contact Us</h3>
+
+        <div class="contact-grid" style="margin-top:12px">
+          <div class="contact-card info-list">
+            <p><strong style="color:#fff">Phone:</strong> <a href="tel:+916302831056" style="color:var(--gold);text-decoration:none">+91 63028 31056</a></p>
+            <p><strong style="color:#fff">WhatsApp:</strong> <a href="https://wa.me/916302831056" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none">Chat on WhatsApp</a></p>
+            <p><strong style="color:#fff">Email:</strong> <a href="mailto:hashtagelevator@gmail.com" style="color:var(--gold);text-decoration:none">hashtagelevator@gmail.com</a></p>
+            <p><strong style="color:#fff">Location:</strong> Hyderabad, India</p>
+
+            <hr style="border:none;border-top:1px solid rgba(255,255,255,.03);margin:12px 0"/>
+
+            <p style="font-size:13px;color:#cfcfcf">Scan WhatsApp QR to open chat:</p>
+            <!-- QR image (points to wa.me link) -->
+            <div style="display:flex;gap:8px;align-items:center">
+              <img src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=https%3A%2F%2Fwa.me%2F916302831056" alt="WhatsApp QR" style="width:120px;height:120px;border-radius:8px;border:1px solid rgba(255,255,255,.03)">
+              <div style="font-size:13px">
+                <p style="margin:0;color:#ddd">+91 63028 31056</p>
+                <p style="margin:6px 0"><a href="https://chart.googleapis.com/chart?chs=400x400&cht=qr&chl=https%3A%2F%2Fwa.me%2F916302831056" download="hashtagelevators_whatsapp_qr.png" style="color:var(--gold);text-decoration:none">Download QR</a></p>
+                <p style="margin:0;color:#bdbdbd;font-size:12px">Open camera or scanner and scan to start WhatsApp chat.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Contact form uses FormSubmit (no backend required). Replace email if needed. -->
+          <div class="contact-card contact-form card">
+            <form action="https://formsubmit.co/hashtagelevator@gmail.com" method="POST" autocomplete="on">
+              <!-- Protect: optionally add hidden _captcha or redirect -->
+              <input type="hidden" name="_subject" value="New contact from Hashtag Elevators website">
+              <input type="hidden" name="_template" value="table">
+              <!-- Optionally set a redirect URL after submit -->
+              <!-- <input type="hidden" name="_next" value="https://hashtagelevator-eng.github.io/HASTAG-ELEVATORS/thankyou.html"> -->
+              <label style="font-size:13px;color:#ddd">Your Name</label>
+              <input type="text" name="name" placeholder="Full name" required />
+              <label style="font-size:13px;color:#ddd">Phone</label>
+              <input type="tel" name="phone" placeholder="+91 63xxxxxxxx" required />
+              <label style="font-size:13px;color:#ddd">Email</label>
+              <input type="email" name="email" placeholder="you@example.com" required />
+              <label style="font-size:13px;color:#ddd">Message</label>
+              <textarea name="message" rows="4" placeholder="Tell us about your project" required></textarea>
+              <button type="submit">Send Message</button>
+            </form>
+            <p style="font-size:12px;color:#bfbfbf;margin-top:10px">Or call/WhatsApp: <a href="tel:+916302831056" style="color:var(--gold)">+91 63028 31056</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="yr"></span> Hashtag Elevators • All rights reserved • <a href="mailto:hashtagelevator@gmail.com" style="color:var(--gold);text-decoration:none">hashtagelevator@gmail.com</a></p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp button + small QR box -->
+  <div class="floating">
+    <div class="qr-card card" title="Scan to open WhatsApp">
+      <img src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=https%3A%2F%2Fwa.me%2F916302831056" alt="WhatsApp QR">
+      <div style="font-size:13px;color:#ddd;margin-top:6px">Scan to chat</div>
     </div>
 
-    <div class="services-box">
-        <h3>⚙ Maintenance & AMC</h3>
-        <p>Affordable Annual Maintenance Contracts to keep your lifts running smoothly.</p>
-    </div>
+    <a class="whatsapp-fab" href="https://wa.me/916302831056" target="_blank" rel="noopener">
+      💬 WhatsApp
+    </a>
+  </div>
 
-    <div class="services-box">
-        <h3>🔧 Lift Repair</h3>
-        <p>Fast and professional repair services for all types of elevators.</p>
-    </div>
+<script>
+  // dynamic year
+  document.getElementById('yr').textContent = new Date().getFullYear();
 
-    <div class="services-box">
-        <h3>⬆ Modernization</h3>
-        <p>Upgrade old lifts with new technology, design and safety.</p>
-    </div>
-</div>
-
-<div id="gallery" class="section">
-    <h2>Gallery</h2>
-    <p>Images will be added here. Aap mujhe pictures doge, main add kar dunga.</p>
-</div>
-
-<div id="contact" class="section">
-    <h2>Contact Us</h2>
-    <p><strong>Phone:</strong> 0000000000</p>
-    <p><strong>Email:</strong> yourmail@gmail.com</p>
-    <p><strong>Location:</strong> Hyderabad / India</p>
-</div>
-
-<footer>
-    <p>© 2025 Hashtag Elevators. All Rights Reserved.</p>
-</footer>
-
-<!-- WhatsApp Button -->
-<a class="whatsapp-btn" href="https://wa.me/91XXXXXXXXXX" target="_blank">WhatsApp</a>
+  // small client-side enhancement: allow download QR by clicking the QR image
+  (function(){
+    const qrImg = document.querySelector('.qr-card img');
+    if(!qrImg) return;
+    qrImg.style.cursor = 'pointer';
+    qrImg.addEventListener('click', function(){
+      // open larger QR in new tab so user can save
+      window.open(this.src.replace('chs=200x200','chs=400x400'),'_blank');
+    });
+  })();
+</script>
 
 </body>
 </html>
