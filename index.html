@@ -28,11 +28,9 @@
     .container{max-width:var(--maxw); margin:0 auto; padding:0 16px;}
     .top{display:flex;gap:16px;align-items:center; justify-content:space-between;}
     .brand{display:flex;gap:12px;align-items:center}
-    /* inline svg logo container */
-    .logo-wrap{width:68px;height:68px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#111,#1a1a1a);border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.6)}
+    .logo-img{width:72px;height:72px;display:block;border-radius:10px;object-fit:contain;background:transparent}
     .brand h1{margin:0;font-size:20px;color:var(--gold);letter-spacing:0.6px}
     .brand p{margin:0;font-size:12px;color:var(--muted)}
-
     nav a{color:var(--muted); text-decoration:none;margin-left:18px;font-weight:600}
     nav a.cta{background:var(--gold); color:#080808; padding:8px 12px;border-radius:8px;margin-left:14px;font-weight:700}
 
@@ -90,20 +88,8 @@
     <div class="container">
       <div class="top">
         <div class="brand">
-          <!-- Inline SVG logo (editable) -->
-          <div class="logo-wrap" aria-hidden="true">
-            <!-- simple monogram logo -->
-            <svg width="56" height="56" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hashtag Elevators logo">
-              <rect x="0" y="0" width="100" height="100" rx="14" fill="#0f0f0f"/>
-              <g fill="none" stroke="#f2c744" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M24 28 L76 28" />
-                <path d="M24 72 L76 72" />
-                <path d="M36 18 L36 82" />
-                <path d="M64 18 L64 82" />
-              </g>
-            </svg>
-          </div>
-
+          <!-- Logo: save your uploaded logo as "logo.png" in the repo root -->
+          <img class="logo-img" src="logo.png" alt="Hashtag Elevators logo" />
           <div>
             <h1>Hashtag Elevators</h1>
             <p>Premium Elevator Installation & Services</p>
@@ -210,26 +196,23 @@
             <hr style="border:none;border-top:1px solid rgba(255,255,255,.03);margin:12px 0"/>
 
             <p style="font-size:13px;color:#cfcfcf">Scan WhatsApp QR to open chat:</p>
-            <!-- QR image (points to wa.me link) -->
+            <!-- QR image (use the provided whatsapp_qr.png saved in repo root) -->
             <div style="display:flex;gap:8px;align-items:center">
-              <img src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=https%3A%2F%2Fwa.me%2F916302831056" alt="WhatsApp QR" style="width:120px;height:120px;border-radius:8px;border:1px solid rgba(255,255,255,.03)">
+              <img src="whatsapp_qr.png" alt="WhatsApp QR" style="width:120px;height:120px;border-radius:8px;border:1px solid rgba(255,255,255,.03)">
               <div style="font-size:13px">
                 <p style="margin:0;color:#ddd">+91 63028 31056</p>
-                <p style="margin:6px 0"><a href="https://chart.googleapis.com/chart?chs=400x400&cht=qr&chl=https%3A%2F%2Fwa.me%2F916302831056" download="hashtagelevators_whatsapp_qr.png" style="color:var(--gold);text-decoration:none">Download QR</a></p>
+                <p style="margin:6px 0"><a href="whatsapp_qr.png" download="hashtagelevators_whatsapp_qr.png" style="color:var(--gold);text-decoration:none">Download QR</a></p>
                 <p style="margin:0;color:#bdbdbd;font-size:12px">Open camera or scanner and scan to start WhatsApp chat.</p>
               </div>
             </div>
 
           </div>
 
-          <!-- Contact form uses FormSubmit (no backend required). Replace email if needed. -->
+          <!-- Contact form uses FormSubmit (no backend required). First submit will require confirming your email on formsubmit.co -->
           <div class="contact-card contact-form card">
             <form action="https://formsubmit.co/hashtagelevator@gmail.com" method="POST" autocomplete="on">
-              <!-- Protect: optionally add hidden _captcha or redirect -->
               <input type="hidden" name="_subject" value="New contact from Hashtag Elevators website">
               <input type="hidden" name="_template" value="table">
-              <!-- Optionally set a redirect URL after submit -->
-              <!-- <input type="hidden" name="_next" value="https://hashtagelevator-eng.github.io/HASTAG-ELEVATORS/thankyou.html"> -->
               <label style="font-size:13px;color:#ddd">Your Name</label>
               <input type="text" name="name" placeholder="Full name" required />
               <label style="font-size:13px;color:#ddd">Phone</label>
@@ -257,7 +240,7 @@
   <!-- Floating WhatsApp button + small QR box -->
   <div class="floating">
     <div class="qr-card card" title="Scan to open WhatsApp">
-      <img src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=https%3A%2F%2Fwa.me%2F916302831056" alt="WhatsApp QR">
+      <img src="whatsapp_qr.png" alt="WhatsApp QR">
       <div style="font-size:13px;color:#ddd;margin-top:6px">Scan to chat</div>
     </div>
 
@@ -270,14 +253,13 @@
   // dynamic year
   document.getElementById('yr').textContent = new Date().getFullYear();
 
-  // small client-side enhancement: allow download QR by clicking the QR image
+  // make QR image clickable (open larger in new tab)
   (function(){
     const qrImg = document.querySelector('.qr-card img');
     if(!qrImg) return;
     qrImg.style.cursor = 'pointer';
     qrImg.addEventListener('click', function(){
-      // open larger QR in new tab so user can save
-      window.open(this.src.replace('chs=200x200','chs=400x400'),'_blank');
+      window.open(this.src,'_blank');
     });
   })();
 </script>
