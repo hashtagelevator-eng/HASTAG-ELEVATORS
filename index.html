@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Hashtag Elevators — Professional Elevator Services</title>
+  <title>Hashtag Elevators — Projects & Gallery</title>
 
-  <!-- Google Site Verification -->
+  <!-- Google Site Verification (already yours) -->
   <meta name="google-site-verification" content="h55d9KHZbqClKf6FFl5p775ETPdrZUVIiDkKismCBZg" />
 
   <style>
@@ -18,139 +18,198 @@
       --maxw:1100px;
     }
     *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background:linear-gradient(180deg,#070707 0%, #0e0e0e 100%);
-      color:var(--muted);
-      -webkit-font-smoothing:antialiased;
+    body{margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial; background:linear-gradient(180deg,#070707,#0e0e0e); color:var(--muted)}
+    .container{max-width:var(--maxw);margin:0 auto;padding:20px}
+
+    header{display:flex;align-items:center;gap:16px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.03)}
+    .logo{width:72px;height:72px;object-fit:contain;border-radius:8px}
+    h1{margin:0;color:var(--gold);font-size:20px}
+
+    nav{margin-top:8px;margin-bottom:18px}
+    nav a{color:var(--muted);margin-right:14px;text-decoration:none;font-weight:600}
+
+    .hero{display:flex;gap:24px;align-items:center;padding:28px 0}
+    .hero-left{flex:1}
+    .hero-right{flex:0 0 320px}
+    .lead{color:#ddd;margin-top:6px}
+
+    /* Projects */
+    .projects{display:grid;grid-template-columns:1fr;gap:18px;margin-top:12px}
+    .project{background:var(--card);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,.03)}
+    .project-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .project-meta{font-size:14px;color:#dcdcdc}
+    .project-desc{color:#cfcfcf;margin-top:8px}
+
+    /* gallery grid inside project */
+    .proj-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:12px}
+    .proj-gallery img{width:100%;height:140px;object-fit:cover;border-radius:8px;border:1px solid rgba(255,255,255,.03);cursor:pointer}
+
+    /* video card */
+    .video-wrap{position:relative;margin-top:12px}
+    .video-wrap video{width:100%;border-radius:8px;background:#000}
+    .video-overlay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none}
+    .play-btn{width:64px;height:64px;border-radius:50%;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;color:#fff;font-size:26px;pointer-events:none}
+
+    /* contact */
+    .contact{margin-top:22px;background:linear-gradient(180deg,#0f0f0f,#131313);padding:16px;border-radius:10px;border:1px solid rgba(255,255,255,.03)}
+    .contact a{color:var(--gold);text-decoration:none;font-weight:700}
+
+    footer{margin-top:26px;padding:14px 0;text-align:center;color:#9f9f9f;border-top:1px solid rgba(255,255,255,.03)}
+
+    @media (max-width:880px){
+      .hero{flex-direction:column}
+      .hero-right{width:100%}
     }
-
-    header{background:linear-gradient(90deg,rgba(0,0,0,.7), rgba(10,10,10,.9)); padding:26px 16px; border-bottom:1px solid rgba(255,255,255,.03)}
-    .container{max-width:var(--maxw); margin:0 auto; padding:0 16px;}
-    .top{display:flex;gap:16px;align-items:center; justify-content:space-between;}
-    .brand{display:flex;gap:12px;align-items:center}
-    .logo-img{width:72px;height:72px;display:block;border-radius:10px;object-fit:contain;background:transparent}
-    .brand h1{margin:0;font-size:20px;color:var(--gold);letter-spacing:0.6px}
-    .brand p{margin:0;font-size:12px;color:var(--muted)}
-    nav a{color:var(--muted); text-decoration:none;margin-left:18px;font-weight:600}
-    nav a.cta{background:var(--gold); color:#080808; padding:8px 12px;border-radius:8px;margin-left:14px;font-weight:700}
-
-    .hero{padding:56px 0 40px}
-    .hero-inner{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
-    .hero-left{flex:1 1 420px; min-width:280px}
-    .hero h2{color: #fff; margin:0 0 12px; font-size:34px; line-height:1.05}
-    .hero p.lead{color: #ddd; margin:0 0 18px}
-
-    /* UPDATED KPI TEXT */
-    .hero .kpis{display:flex;gap:12px;flex-wrap:wrap}
-    .kpi{background:linear-gradient(180deg,#0f0f0f,#131313); padding:12px 16px;border-radius:10px;border:1px solid rgba(255,255,255,.03); min-width:120px}
-    .kpi strong{display:block;color:var(--gold); font-size:18px}
-    .kpi span{color:#cfcfcf;font-size:13px}
-
-    .hero-right{flex:0 0 360px; min-width:240px; text-align:center}
-
-    section{background:transparent;padding:28px 0}
-    .card{background:var(--card); padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,.03); box-shadow:0 6px 24px rgba(0,0,0,.6)}
-
-    footer{padding:24px 0;text-align:center;color:#bdbdbd;border-top:1px solid rgba(255,255,255,.02)}
-
-    .floating{position:fixed;right:18px;bottom:18px;z-index:999}
-    .whatsapp-fab{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#052006;padding:12px 14px;border-radius:999px;box-shadow:0 10px 30px rgba(37,211,102,.12);text-decoration:none;font-weight:800}
-    .qr-card{position:fixed;right:18px;bottom:88px;z-index:999; background:var(--card); padding:10px;border-radius:12px;border:1px solid rgba(255,255,255,.03); text-align:center; width:150px}
-    .qr-card img{width:120px;height:120px;display:block;margin:4px auto;border-radius:8px}
   </style>
 </head>
 <body>
-
-  <header>
-    <div class="container">
-      <div class="top">
-        <div class="brand">
-          <img class="logo-img" src="logo.png" alt="Hashtag Elevators logo" />
-          <div>
-            <h1>Hashtag Elevators</h1>
-            <p>Premium Elevator Installation & Services</p>
-          </div>
-        </div>
-
-        <nav aria-label="Primary">
-          <a href="#about">About</a>
-          <a href="#services">Services</a>
-          <a href="#gallery">Gallery</a>
-          <a href="#contact" class="cta">Contact</a>
-        </nav>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <img src="logo.png" alt="Hashtag Elevators" class="logo" />
+      <div>
+        <h1>Hashtag Elevators</h1>
+        <div style="font-size:13px;color:#bfbfbf">Premium Elevator Installation • Maintenance • AMC</div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main class="container">
+    <!-- Navigation (anchor links) -->
+    <nav>
+      <a href="#projects">Projects</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
 
+    <!-- Hero -->
     <section class="hero">
-      <div class="hero-inner">
-        <div class="hero-left">
-          <h2>Professional Elevator Solutions — Safe. Fast. Reliable.</h2>
-          <p class="lead">We provide installation, repair & annual maintenance for all types of elevators.</p>
+      <div class="hero-left">
+        <h2 style="color:#fff;margin:0">Our Recent Work & Projects</h2>
+        <div class="lead">Premium Elevator Solutions for Homes & Buildings — installation, modernization and maintenance.</div>
+      </div>
+      <div class="hero-right contact">
+        <div style="font-weight:700;color:var(--gold)">Contact</div>
+        <div style="margin-top:8px">📞 <a href="tel:+916302831056">+91 63028 31056</a></div>
+        <div style="margin-top:6px">📧 <a href="mailto:hashtagelevator@gmail.com">hashtagelevator@gmail.com</a></div>
+        <div style="margin-top:8px"><img src="whatsapp_qr.png" alt="WhatsApp QR" style="width:120px;border-radius:8px"></div>
+      </div>
+    </section>
 
-          <div class="kpis">
-            <div class="kpi card"><strong>10+ Years</strong><span>Industry Expertise</span></div>
-            <div class="kpi card"><strong>Trusted</strong><span>By Clients Across Telangana</span></div>
-            <div class="kpi card"><strong>24/7</strong><span>Emergency Support</span></div>
+    <!-- Projects list -->
+    <section id="projects">
+      <div class="projects">
+
+        <!-- Project 1 -->
+        <article class="project" id="proj-taufiq">
+          <div class="project-head">
+            <div>
+              <div style="font-weight:800;color:var(--gold)">Premium SS Cabin Lift</div>
+              <div class="project-meta">Customer: <strong>Taufiq Sir</strong> • Location: <strong>Nawab Sab Kunta</strong></div>
+            </div>
+            <div style="text-align:right">
+              <div style="font-size:13px;color:#cfcfcf">Status: Completed</div>
+            </div>
           </div>
-        </div>
+          <p class="project-desc">High–quality premium stainless-steel designer cabin with patterned wall finish and elegant control panel.</p>
 
-        <div class="hero-right card">
-          <img src="https://i.imgur.com/YH2z2Co.jpeg" alt="Elevator" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:10px" />
-          <a class="whatsapp-fab" href="https://wa.me/916302831056" target="_blank">💬 WhatsApp</a>
-        </div>
+          <!-- gallery images for project 1 -->
+          <div class="proj-gallery">
+            <img src="proj1_img1.jpg" alt="Taufiq lift image 1" data-full="proj1_img1.jpg">
+            <img src="proj1_img2.jpg" alt="Taufiq lift image 2" data-full="proj1_img2.jpg">
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project" id="proj-shaqeeb">
+          <div class="project-head">
+            <div>
+              <div style="font-weight:800;color:var(--gold)">Commercial / SS Cabin</div>
+              <div class="project-meta">Customer: <strong>Shaqeeb Sir</strong> • Location: <strong>Peera Cheruvu</strong></div>
+            </div>
+            <div style="text-align:right"><div style="font-size:13px;color:#cfcfcf">Status: Installed</div></div>
+          </div>
+          <p class="project-desc">Commercial-grade stainless steel cabin with robust doors and high load capability.</p>
+
+          <!-- gallery + video -->
+          <div class="proj-gallery">
+            <img src="proj2_img1.jpg" alt="Shaqeeb lift image" data-full="proj2_img1.jpg">
+          </div>
+
+          <div class="video-wrap" data-video="shaqueeb_video.mp4">
+            <!-- clickable overlay to play -->
+            <div style="position:relative">
+              <video id="video-shaqeeb" preload="metadata" poster="proj2_img1.jpg" playsinline controls style="border-radius:8px">
+                <source src="shaqueeb_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project" id="proj-mubashir">
+          <div class="project-head">
+            <div>
+              <div style="font-weight:800;color:var(--gold)">Swing Door SS Cabin (Designer)</div>
+              <div class="project-meta">Customer: <strong>Mubashir Ali Sir</strong> • Location: <strong>Nalgonda District</strong></div>
+            </div>
+            <div style="text-align:right"><div style="font-size:13px;color:#cfcfcf">Status: Commissioned</div></div>
+          </div>
+          <p class="project-desc">Swing door stainless-steel cabin with custom interior design and smooth door operation.</p>
+
+          <div class="proj-gallery">
+            <img src="proj3_img1.jpg" alt="Mubashir lift" data-full="proj3_img1.jpg">
+          </div>
+
+          <div class="video-wrap" data-video="mubashir_video.mp4">
+            <video id="video-mubashir" preload="metadata" poster="proj3_img1.jpg" playsinline controls style="border-radius:8px">
+              <source src="mubashir_video.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </article>
+
       </div>
     </section>
 
-    <section id="about">
-      <div class="card">
-        <h3 style="color:var(--gold);margin-top:0">About Us</h3>
-        <p>HASHTAG ELEVATORS provides high-quality elevator installation, modernization & maintenance services.</p>
+    <!-- Gallery (all images) -->
+    <section id="gallery" style="margin-top:20px">
+      <div style="font-weight:800;color:var(--gold);margin-bottom:10px">Gallery</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px">
+        <!-- You can add more images with the same naming pattern -->
+        <img src="proj1_img1.jpg" alt="" style="width:100%;height:140px;object-fit:cover;border-radius:8px">
+        <img src="proj1_img2.jpg" alt="" style="width:100%;height:140px;object-fit:cover;border-radius:8px">
+        <img src="proj2_img1.jpg" alt="" style="width:100%;height:140px;object-fit:cover;border-radius:8px">
+        <img src="proj3_img1.jpg" alt="" style="width:100%;height:140px;object-fit:cover;border-radius:8px">
       </div>
     </section>
 
-    <section id="services">
-      <div class="card">
-        <h3 style="color:var(--gold);margin-top:0">Our Services</h3>
-
-        <p>🛗 Elevator Installation</p>
-        <p>⚙ AMC & Maintenance</p>
-        <p>🔧 Repair & Breakdown Service</p>
-        <p>⬆ Elevator Modernization</p>
+    <!-- Contact -->
+    <section id="contact" style="margin-top:22px">
+      <div style="background:var(--card);padding:16px;border-radius:10px;border:1px solid rgba(255,255,255,.03)">
+        <h3 style="margin-top:0;color:var(--gold)">Contact Us</h3>
+        <p>Phone: <a href="tel:+916302831056" style="color:var(--gold)">+91 63028 31056</a></p>
+        <p>Email: <a href="mailto:hashtagelevator@gmail.com" style="color:var(--gold)">hashtagelevator@gmail.com</a></p>
+        <p>Location: Hyderabad, India</p>
       </div>
     </section>
 
-    <section id="gallery">
-      <div class="card">
-        <h3 style="color:var(--gold);margin-top:0">Gallery</h3>
-        <img src="https://i.imgur.com/U4vV8ws.jpeg" style="width:100%;border-radius:10px;margin:10px 0">
-      </div>
-    </section>
+    <footer>
+      <div style="margin-top:20px;color:#9f9f9f">© <span id="yr"></span> Hashtag Elevators — All rights reserved</div>
+    </footer>
+  </div>
 
-    <section id="contact">
-      <div class="card">
-        <h3 style="color:var(--gold);margin-top:0">Contact Us</h3>
-        <p>📞 +91 6302831056</p>
-        <p>📧 hashtagelevator@gmail.com</p>
-        <p>📍 Hyderabad, India</p>
+  <script>
+    // set year
+    document.getElementById('yr').textContent = new Date().getFullYear();
 
-        <img src="whatsapp_qr.png" style="width:150px;border-radius:10px;margin-top:10px">
-      </div>
-    </section>
+    // Simple image popup: open full image in new tab when clicked
+    document.querySelectorAll('.proj-gallery img').forEach(img => {
+      img.addEventListener('click', () => {
+        window.open(img.getAttribute('data-full') || img.src, '_blank');
+      });
+    });
 
-  </main>
-
-  <footer>
-    <p>© <span id="yr"></span> Hashtag Elevators</p>
-  </footer>
-
-<script>
-  document.getElementById('yr').textContent = new Date().getFullYear();
-</script>
-
+    // Make video click-to-play handled by default controls. No extra JS required.
+  </script>
 </body>
 </html>
